@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -euo pipefail
+
+TAG=${MEGALINTER_IMAGE_VERSION:-latest}
+
+echo "--- :docker: Fetching nvuillam/mega-linter:${TAG}"
+
+docker pull "nvuillam/mega-linter:${TAG}"
+
+echo "+++ Scanning with MegaLinter"
+
+args=(
+    "-v"
+    "${PWD}:/tmp/lint"
+    "-e" "ENABLE_LINTERS=ALL"
+    "-e" "SHOW_ELAPSED_TIME=true"
+    "-e" "PRINT_ALPACA=true"
+)
+
+docker run "${args[@]}" nvuillam/mega-linter:"${TAG}"
