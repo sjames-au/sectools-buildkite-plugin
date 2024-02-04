@@ -18,6 +18,7 @@ args=(
     "-e" "PRINT_ALPACA=true"
     "-e" "REPORT_OUTPUT_FOLDER=/tmp/lint/report"
     "-e" "REPORT_OUTPUT_DETAIL=debug"
+    "-e" "JSON_REPORTER=true"
 )
 
 docker run "${args[@]}" nvuillam/mega-linter:"${TAG}"
