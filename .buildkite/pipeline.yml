@@ -13,4 +13,9 @@ steps:
     command: gitleaks
     plugins:
       - sjames-au/sectools#gitleaks:
-          
+  - label: ":mega-linter: Run MegaLinter"
+    command: megalinter
+    plugins:
+      - sjames-au/sectools#gitleaks:
+      - artifacts#v1.3.0:
+          upload: 'report/mega-linter-report.json'          
