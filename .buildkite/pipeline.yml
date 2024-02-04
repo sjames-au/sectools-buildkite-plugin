@@ -16,5 +16,5 @@ steps:
   - label: ":mega-linter: Run MegaLinter"
     command: megalinter
     plugins:
-      - sjames-au/sectools#gitleaks:
+      - sjames-au/sectools#megalinter:
 
