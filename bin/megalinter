@@ -16,6 +16,12 @@ args=(
     "-e" "ENABLE_LINTERS=ALL"
     "-e" "SHOW_ELAPSED_TIME=true"
     "-e" "PRINT_ALPACA=true"
+    "-e" "REPORT_OUTPUT_FOLDER=/tmp/lint/report"
+    "-e" "REPORT_OUTPUT_DETAIL=debug"
 )
 
 docker run "${args[@]}" nvuillam/mega-linter:"${TAG}"
+
+echo "--- :buildkite: Uploading MegaLinter report to Buildkite"
+
+buildkite-agent artifact upload "/tmp/lint/report/mega-linter-report.json"
